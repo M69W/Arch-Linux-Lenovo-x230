@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case $1 in
+    pre) /path/to/your/script false ;;
+    post)       
+	if cat /sys/class/power_supply/AC0/online | grep 0 > /dev/null 2>&1
+	then
+    		/path/to/your/script true	
+	else
+    		/path/to/your/script false
+	fi
+    ;;
+esac
+exit 0
